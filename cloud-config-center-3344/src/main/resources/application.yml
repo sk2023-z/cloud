@@ -1,0 +1,45 @@
+server:
+  port: 3344
+
+spring:
+  application:
+    name: cloud-config-center
+  cloud:
+    config:
+      server:
+        git:
+          # uri: git@gitee.com:zjyK/springcloud-config.git
+          uri: https://gitee.com/zjyK/springcloud-config.git
+          search-paths:
+            - springcloud-config
+          username: 17623296356
+          password: springcloudconfig123456
+      # skip-ssl-validation: true
+      label: master
+    bus:
+      refresh:
+        enabled: true
+  # rabbitmq
+#  rabbitmq:
+#    host: 192.168.1.200
+#    port: 5672
+#    username: guest
+#    password: guest
+rabbitmq:
+  host: localhost
+  port: 5672
+  username: guest
+  password: guest
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+
+
+#rabbitmq相关配置，暴露bus刷新配置的端点
+management:
+  endpoints: # 暴露 bus 刷新配置的端点
+    web:
+      exposure:
+        include: "*"
