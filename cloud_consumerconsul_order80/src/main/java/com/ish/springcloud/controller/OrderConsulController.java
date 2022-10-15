@@ -13,15 +13,15 @@ import org.springframework.web.client.RestTemplate;
  */
 @RestController
 @Slf4j
-public class OrderZKController {
+public class OrderConsulController {
 
-    public static final String INVOKE_URL = "http://cloud-provider-payment";
+    public static final String INVOKE_URL = "http://consul-provider-payment";
 
     @Autowired
     private RestTemplate restTemplate;
 
-    @GetMapping("/consumer/payment/zk")
+    @GetMapping("/consumer/payment/consul")
     public String paymentInfo() {
-        return restTemplate.getForObject(INVOKE_URL + "/payment/zk", String.class);
+        return restTemplate.getForObject(INVOKE_URL + "/payment/consul", String.class);
     }
 }
